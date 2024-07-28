@@ -1,0 +1,23 @@
+@media (max-width: 376px) {
+    .sitem {
+        flex-direction: column;
+        width: 300px;
+    }
+    div.sitem{
+        gap: 0px !important;
+    }
+    .hide {
+        display: none;
+    }
+
+    .BoxC {
+        width: 320px;
+        align-self: center;
+    }
+
+    .BoxD {
+        width: 320px !important; 
+        align-self: center;
+    }
+
+} 

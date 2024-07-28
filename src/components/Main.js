@@ -13,6 +13,7 @@ import PlaceCard from './PlaceCard';
 import data from './data.json'; //นำเข้าข้อมูล
 import { Pagination } from 'antd';
 import SearchIcon from '@mui/icons-material/Search';
+import "./Main.css";
 
 const Main = () => {
   const [category, setCategory] = useState ('restaurant');
@@ -63,23 +64,28 @@ const Main = () => {
     <div>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          padding: '0px 42px'
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          padding: "0px 42px",
         }}
       >
         <div>
-          <p style={{fontSize: '34px', fontWeight: '500'}}>Place List</p>
+          <p style={{ fontSize: "34px", fontWeight: "500" }}>Place List</p>
         </div>
-        <div style={{display: 'flex', gap: '14px', alignItems: 'center'}}>
+        <div
+          className="sitem"
+          style={{ display: "flex", gap: "14px", alignItems: "center" }}
+        >
           <FormControl
             variant="outlined"
             fullWidth
             margin="normal"
-            style={{width: '185px'}}
+            style={{ width: "185px" }}
+            className="BoxD"
           >
+            
             <InputLabel>Categories</InputLabel>
             <Select
               labelId="category-label"
@@ -92,59 +98,67 @@ const Main = () => {
               <MenuItem value="bakery">Bakery</MenuItem>
             </Select>
           </FormControl>
-          <div style={{border: '1px solid #134B8A', height: '30px'}} />
+  
+          <div
+            className="hide"
+            style={{ border: "1px solid #134B8A", height: "30px" }}
+          />
+         
           <FormControl
             variant="outlined"
             fullWidth
             margin="normal"
-            style={{width: '400px'}}
+            style={{ width: "400px" }}
           >
-            <Box
-              sx={{
-                width: 500,
-                maxWidth: '100%',
-              }}
-            >
-              <TextField
-                fullWidth
-                label="Search name..."
-                id="fullWidth"
-                onChange={(e)=> {
-                  setPagination((prevState) => {
-                    return {
-                      ...prevState,
-                      current: 1,
-                    };
-                  }); 
-                  setSearchInput(e.target.value)
+             <div className="BoxC">
+              <Box
+                sx={{
+                  width: 500,
+                  maxWidth: "100%",
                 }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton>
-                        <SearchIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Box>
+              >
+                <TextField
+                  fullWidth
+                  label="Search name..."
+                  id="fullWidth"
+                  onChange={(e) => {
+                    setPagination((prevState) => {
+                      return {
+                        ...prevState,
+                        current: 1,
+                      };
+                    });
+                    setSearchInput(e.target.value);
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <IconButton>
+                          <SearchIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                
+              </Box>
+              </div>
           </FormControl>
-
         </div>
       </div>
 
       <PlaceCard data={renderByPagination} />
-      <div style={{
-        display: 'flex',
-        padding: '20px',
-        justifyContent: 'center',
-    
-      }}>
+      <div
+        style={{
+          display: "flex",
+          padding: "20px",
+          justifyContent: "center",
+        }}
+      >
         <Pagination
-          current={pagination.current} 
+          current={pagination.current}
           total={filteredRestaurants.length}
-          onChange={(e)=> {
+          onChange={(e) => {
             setPagination((prevState) => {
               return {
                 ...prevState,
@@ -156,6 +170,7 @@ const Main = () => {
       </div>
     </div>
   );
+
 };
 
 export default Main;
